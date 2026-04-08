@@ -31,6 +31,69 @@ nav{
 .nav-links a{text-decoration:none;font-size:13px;color:var(--muted);transition:color 0.2s;}
 .nav-links a:hover{color:var(--accent);}
 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.hamburger span {
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 0 1rem;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 58px;
+    left: 0;
+    width: 100%;
+    background: var(--surface);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+  section {
+    padding: 3rem 1rem;
+  }
+  .hero {
+    padding: 4rem 1rem 3rem;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .timeline {
+    padding-left: 0;
+  }
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .timeline-date {
+    order: -1;
+  }
+}
+
 .hero{
   background:var(--bg);
   padding:5.5rem 2rem 4.5rem;
@@ -169,6 +232,11 @@ footer{text-align:center;padding:1.5rem;font-size:12px;color:var(--muted);border
     <li><a href="#experiencia">Experiencia</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </nav>
 
 <div class="hero">
@@ -296,10 +364,7 @@ footer{text-align:center;padding:1.5rem;font-size:12px;color:var(--muted);border
         </div>
       </div>
     </div>
-    <p class="projects-note">Proyectos en camino — cuando los traigas, los sumamos acá.</p>
-    <div style="text-align:center;margin-top:1rem;">
-      <button class="btn-accent" onclick="sendPrompt('Quiero agregar un proyecto al portfolio')">+ Agregar proyecto ↗</button>
-    </div>
+
   </div>
 </div>
 
@@ -337,6 +402,14 @@ footer{text-align:center;padding:1.5rem;font-size:12px;color:var(--muted);border
       </div>
       <div class="cert-badge">Completado</div>
     </div>
+    <div class="cert-row">
+      <div class="cert-icon">🌐</div>
+      <div>
+        <div class="cert-name">Inglés B1+</div>
+        <div class="cert-sub">Certificación de idioma — nivel intermedio avanzado</div>
+      </div>
+      <div class="cert-badge">Completado</div>
+    </div>
   </div>
 </section>
 
@@ -352,6 +425,12 @@ footer{text-align:center;padding:1.5rem;font-size:12px;color:var(--muted);border
 </div>
 
 <footer>© 2025 Maximiliano Fornio — Analista en Tecnología de la Información</footer>
+
+<script>
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('open');
+}
+</script>
 
 </body>
 </html>
